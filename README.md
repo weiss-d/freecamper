@@ -31,6 +31,7 @@ $ scrapy crawl nyp_spider
 ```
 Processing speed is now set to about 2500 albums per hour.
 Results would be saved in `nyp_spider` folder in a CSV file.
+To stop it press `Ctrl+C` once and wait untill spider termitanes. 
 
 ## What is to be done
 
@@ -40,7 +41,7 @@ Results would be saved in `nyp_spider` folder in a CSV file.
 
 ## What is not to be done
 
-❌ Any automatic audio downloaders, ripers etc.
+❌ Any automatic audio downloaders, rippers etc.
 
 ## How to participate
 Feel free to open an issue or make a PR. No rules yet. 🙂
