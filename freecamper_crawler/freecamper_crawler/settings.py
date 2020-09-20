@@ -12,6 +12,8 @@ BOT_NAME = 'freecamper_crawler'
 SPIDER_MODULES = ['freecamper_crawler.spiders']
 NEWSPIDER_MODULE = 'freecamper_crawler.spiders'
 
+FEED_FORMAT="csv"
+FEED_URI="%(name)s/%(time)s.csv"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'freecamper_crawler (+http://www.yourdomain.com)'
