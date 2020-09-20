@@ -4,11 +4,13 @@ NYP_STRING = "name your price"
 
 
 class QuotesSpider(scrapy.Spider):
-    name = "default_spider"
+    name = "nyp_spider"
 
     start_urls = ["https://bandcamp.com/artist_index/"]
 
     def parse(self, response):
+        """Parses Bandcamp artist index.
+        This index by default is sorted by time (newest first)."""
         artist_urls = response.css(".item>a::attr(href)").getall()
         yield from response.follow_all(artist_urls, self.parse_artist)
 
@@ -19,21 +21,23 @@ class QuotesSpider(scrapy.Spider):
             yield response.follow(next_page, callback=self.parse)
 
     def parse_artist(self, response):
-        print("Parsing artist:")
+        """Parses an artist page.
+        If the artist has only one release, the artist's page represents this release.
+        Whole page is passed to parse_album().
+        If the artist has multiple releases, this page is in form of discography list.
+        Links to albums are then extracted and passed to parse_album()."""
         if "releases" in response.url:
-            print("Single album artist:")
             yield from self.parse_album(response)
         else:
-            print("Parsing discography:")
             yield from response.follow_all(
                 response.css(".music-grid-item>a::attr(href)").getall(),
                 self.parse_album,
             )
 
     def parse_album(self, response):
-        print("Parsing Album:")
+        """Parses an album.
+        Data is only extracted if the album allows free FLAC download."""
         if response.css(".buyItemNyp::text").get() == NYP_STRING:
-            print("FREE Album!", response.css(".buyItemNyp::text").get())
             yield {
                 "artist": response.xpath('//span[@itemprop="byArtist"]/a/text()').get(),
                 "album": response.css(".trackTitle::text").get().strip(),
