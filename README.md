@@ -32,6 +32,8 @@ $ scrapy crawl nyp_spider
 Processing speed is now set to about 2500 albums per hour.
 Results would be saved in `nyp_spider` folder in a CSV file.
 To stop it press `Ctrl+C` once and wait untill spider termitanes. 
+Resulting file should look like this:
+![CSV in LibreOffice](nyp_spider_test_output.png)
 
 ## What is to be done
 
