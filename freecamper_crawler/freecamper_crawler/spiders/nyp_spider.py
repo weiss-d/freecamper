@@ -43,8 +43,11 @@ class nypSpider(scrapy.Spider):
             year = response.xpath('//meta[@itemprop="datePublished"]/@content').get()[
                 :4
             ]
-            tracks = response.css(".track_number:last-child::text").get()
+            tracks = response.css(
+                ".track_row_view:last-child>.track-number-col>div::text"
+            ).get()
             tags = response.css(".tag::text").getall()
+            print(tracks)
 
             yield {
                 "artist": artist,
