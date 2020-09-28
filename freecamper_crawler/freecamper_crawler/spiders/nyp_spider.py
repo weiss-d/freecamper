@@ -3,7 +3,7 @@ import scrapy
 NYP_STRING = "name your price"
 
 
-class QuotesSpider(scrapy.Spider):
+class nypSpider(scrapy.Spider):
     name = "nyp_spider"
 
     start_urls = ["https://bandcamp.com/artist_index/"]
@@ -38,12 +38,19 @@ class QuotesSpider(scrapy.Spider):
         """Parses an album.
         Data is only extracted if the album allows free FLAC download."""
         if response.css(".buyItemNyp::text").get() == NYP_STRING:
+            artist = response.xpath('//span[@itemprop="byArtist"]/a/text()').get()
+            album = response.css(".trackTitle::text").get().strip()
+            year = response.xpath('//meta[@itemprop="datePublished"]/@content').get()[
+                :4
+            ]
+            tracks = response.css(".track_number:last-child::text").get()
+            tags = response.css(".tag::text").getall()
+
             yield {
-                "artist": response.xpath('//span[@itemprop="byArtist"]/a/text()').get(),
-                "album": response.css(".trackTitle::text").get().strip(),
-                "year": response.xpath(
-                    '//meta[@itemprop="datePublished"]/@content'
-                ).get()[:4],
-                "tags": response.css(".tag::text").getall(),
+                "artist": artist,
+                "album": album,
+                "year": year if year else "",
+                "tracks": int(tracks[:-1]) if tracks else 1,
+                "tags": tags,
                 "url": response.url,
             }
