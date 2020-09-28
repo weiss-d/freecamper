@@ -1,4 +1,7 @@
+from datetime import datetime
+
 import scrapy
+
 
 NYP_STRING = "name your price"
 
@@ -40,19 +43,26 @@ class nypSpider(scrapy.Spider):
         if response.css(".buyItemNyp::text").get() == NYP_STRING:
             artist = response.xpath('//span[@itemprop="byArtist"]/a/text()').get()
             album = response.css(".trackTitle::text").get().strip()
-            year = response.xpath('//meta[@itemprop="datePublished"]/@content').get()[
-                :4
-            ]
+
+            try:
+                release_date = datetime.strptime(
+                    response.xpath('//meta[@itemprop="datePublished"]/@content').get(),
+                    "%Y%m%d",
+                )
+            except TypeError:
+                release_date = None
+                print(str(e))
+
             tracks = response.css(
                 ".track_row_view:last-child>.track-number-col>div::text"
             ).get()
+
             tags = response.css(".tag::text").getall()
-            print(tracks)
 
             yield {
                 "artist": artist,
                 "album": album,
-                "year": year if year else "",
+                "year": release_date.year if release_date else "",
                 "tracks": int(tracks[:-1]) if tracks else 1,
                 "tags": tags,
                 "url": response.url,

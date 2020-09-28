@@ -29,7 +29,7 @@ def test_parse_single_track_album(fake_response):
     result = {
         "artist": "Orphic",
         "album": "Orphic 4",
-        "year": "2020",
+        "year": 2020,
         "tracks": 1,
         "tags": ["jazz", "acoustic", "contemporary", "Bristol"],
         "url": "http://test.url",
@@ -48,7 +48,7 @@ def test_parse_multiple_track_album(fake_response):
     result = {
         "artist": "Globular & Geoglyph",
         "album": "Messages From The Resonator",
-        "year": "2020",
+        "year": 2020,
         "tracks": 8,
         "tags": [
             "dub",
