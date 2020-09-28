@@ -11,10 +11,6 @@ def fake_response():
     def _response(url: str, html_file: Path) -> TextResponse:
         request = Request(url)
 
-        import os
-
-        print(os.getcwd())
-
         with open(html_file, "r") as sample:
             return TextResponse(
                 url=url,
