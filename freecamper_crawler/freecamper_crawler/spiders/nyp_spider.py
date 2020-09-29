@@ -14,6 +14,7 @@ class nypSpider(scrapy.Spider):
     def parse(self, response):
         """Parses Bandcamp artist index.
         This index by default is sorted by time (newest first)."""
+
         artist_urls = response.css(".item>a::attr(href)").getall()
         yield from response.follow_all(artist_urls, self.parse_artist)
 
@@ -29,17 +30,22 @@ class nypSpider(scrapy.Spider):
         Whole page is passed to parse_album().
         If the artist has multiple releases, this page is in form of discography list.
         Links to albums are then extracted and passed to parse_album()."""
+
         if "releases" in response.url:
             yield from self.parse_album(response)
-        else:
+        elif "music" in response.url:
             yield from response.follow_all(
                 response.css(".music-grid-item>a::attr(href)").getall(),
                 self.parse_album,
             )
+        else:
+            yield response.follow("music", callback=self.parse_artist)
+
 
     def parse_album(self, response):
         """Parses an album.
         Data is only extracted if the album allows free FLAC download."""
+
         if response.css(".buyItemNyp::text").get() == NYP_STRING:
             artist = response.xpath('//span[@itemprop="byArtist"]/a/text()').get()
             album = response.css(".trackTitle::text").get().strip()
