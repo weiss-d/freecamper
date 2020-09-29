@@ -57,7 +57,6 @@ class nypSpider(scrapy.Spider):
                 )
             except TypeError:
                 release_date = None
-                print(str(e))
 
             tracks = response.css(
                 ".track_row_view:last-child>.track-number-col>div::text"
