@@ -32,12 +32,13 @@ def test_parse_single_track_album(fake_response):
         "year": 2020,
         "tracks": 1,
         "tags": ["jazz", "acoustic", "contemporary", "Bristol"],
+        "license": {"text": "all rights reserved", "url": ""},
         "url": "http://test.url",
     }
 
     spider = nyp_spider.nypSpider()
 
-    assert next(spider.parse_album(response)) == result
+    assert spider.parse_album(response) == result
 
 
 def test_parse_multiple_track_album(fake_response):
@@ -67,10 +68,11 @@ def test_parse_multiple_track_album(fake_response):
             "trip hop",
             "Bristol",
         ],
+        "license": {"text": "all rights reserved", "url": ""},
         "url": "http://test.url",
     }
 
     spider = nyp_spider.nypSpider()
 
-    assert next(spider.parse_album(response)) == result
+    assert spider.parse_album(response) == result
 
