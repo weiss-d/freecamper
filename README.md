@@ -16,9 +16,13 @@ I implemented a Scrapy spider, that can find all free/NYP releases on the platfo
 
 * Artist / Album
 
-* Release date
+* Release Year
+
+* Number of tracks
 
 * Tags
+
+* License
 
 * Release URL
 
