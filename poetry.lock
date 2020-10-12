@@ -334,11 +334,11 @@ python-versions = "*"
 
 [[package]]
 name = "scrapy"
-version = "2.3.0"
+version = "2.4.0"
 description = "A high-level Web Crawling and Web Scraping framework"
 category = "main"
 optional = false
-python-versions = ">=3.5.2"
+python-versions = ">=3.6"
 
 [package.dependencies]
 cryptography = ">=2.0"
@@ -346,7 +346,7 @@ cssselect = ">=0.9.1"
 itemadapter = ">=0.1.0"
 itemloaders = ">=1.0.1"
 lxml = [
-    {version = ">=3.5.0", markers = "platform_python_implementation != \"PyPy\""},
+    {version = ">=3.5.0", markers = "platform_python_implementation == \"CPython\""},
     {version = ">=4.0.0", markers = "platform_python_implementation == \"PyPy\""},
 ]
 parsel = ">=1.5.0"
@@ -452,7 +452,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "b7be5677ff0cc28a94dfd806813097ec6199c3c2c6313772088a2528ebaa4eb8"
+content-hash = "4489f5d9d635b5b4691951f7b40a09465a4ddea67955f2a11b8d1350c6ed1832"
 
 [metadata.files]
 atomicwrites = [
@@ -683,8 +683,8 @@ queuelib = [
     {file = "queuelib-1.5.0.tar.gz", hash = "sha256:42b413295551bdc24ed9376c1a2cd7d0b1b0fa4746b77b27ca2b797a276a1a17"},
 ]
 scrapy = [
-    {file = "Scrapy-2.3.0-py2.py3-none-any.whl", hash = "sha256:31a9807f8771bfa33693aae9a5da46b4cfc8362dee11dff811574b760cc2749d"},
-    {file = "Scrapy-2.3.0.tar.gz", hash = "sha256:b4d08cdacb615563c291d053ef1ba2dc08d9d4b6d81578684eaa1cf7b832f90c"},
+    {file = "Scrapy-2.4.0-py2.py3-none-any.whl", hash = "sha256:6dace3499c8ca5bef1b7bb8a517cdfcc12c1e685f7ec4158f6e48f2d706e7c1d"},
+    {file = "Scrapy-2.4.0.tar.gz", hash = "sha256:4ea7fbc902ee0b0a79b154d07a5f4e747e2146f272a748557941946000728479"},
 ]
 service-identity = [
     {file = "service_identity-18.1.0-py2.py3-none-any.whl", hash = "sha256:001c0707759cb3de7e49c078a7c0c9cd12594161d3bf06b9c254fdcb1a60dc36"},
