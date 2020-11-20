@@ -334,7 +334,7 @@ python-versions = "*"
 
 [[package]]
 name = "scrapy"
-version = "2.4.0"
+version = "2.4.1"
 description = "A high-level Web Crawling and Web Scraping framework"
 category = "main"
 optional = false
@@ -452,7 +452,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "a9ccd8a9bbb36a3e4c6f27ea3b90f1f72e35d96ecec93c65eeee9c052a999190"
+content-hash = "224648937e6f4d3a151571ff6055a507b07439a2ee8d94dd70b5abc6843493a0"
 
 [metadata.files]
 atomicwrites = [
@@ -685,8 +685,8 @@ queuelib = [
     {file = "queuelib-1.5.0.tar.gz", hash = "sha256:42b413295551bdc24ed9376c1a2cd7d0b1b0fa4746b77b27ca2b797a276a1a17"},
 ]
 scrapy = [
-    {file = "Scrapy-2.4.0-py2.py3-none-any.whl", hash = "sha256:6dace3499c8ca5bef1b7bb8a517cdfcc12c1e685f7ec4158f6e48f2d706e7c1d"},
-    {file = "Scrapy-2.4.0.tar.gz", hash = "sha256:4ea7fbc902ee0b0a79b154d07a5f4e747e2146f272a748557941946000728479"},
+    {file = "Scrapy-2.4.1-py2.py3-none-any.whl", hash = "sha256:27621ab491706ec8cc41168cdbdff07e7fe8c344c8640e9e9faebd7cf84008e2"},
+    {file = "Scrapy-2.4.1.tar.gz", hash = "sha256:68c48f01a58636bdf0f6fcd5035a19ecf277b58af24bd70c36dc6e556df3e005"},
 ]
 service-identity = [
     {file = "service_identity-18.1.0-py2.py3-none-any.whl", hash = "sha256:001c0707759cb3de7e49c078a7c0c9cd12594161d3bf06b9c254fdcb1a60dc36"},
